@@ -1,0 +1,25 @@
+{
+  "name": "kyle-fidalgo",
+  "version": "1.0.0",
+  "description": "Personal Website for fun",
+  "main": "next.config.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Kyle Fidalgo",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^9.5.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "use-sound": "^1.0.2"
+  },
+  "devDependencies": {
+    "dotenv-load": "^2.0.0",
+    "next-env": "^1.1.1",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^1.9.1"
+  }
+}
