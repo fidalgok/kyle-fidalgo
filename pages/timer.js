@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import useSound from 'use-sound';
+import Dropdown from '../src/components/timerDropdown';
 
 
 const statusTypes = {
@@ -93,13 +94,17 @@ export default function timer() {
         <div className="flex items-center justify-center min-h-screen">
             <div>
 
-                <h1>{clockType === clockTypes.work ? 'Time to go to work!' : 'Time for a break!'}</h1>
-                <div>
-                    <span>{calcMinutes(time)}</span>:
+                <h1 className="mb-8 text-lg text-center">{clockType === clockTypes.work ? 'Time to go to work!' : 'Time for a break!'}</h1>
+                <div className="mb-8 text-5xl">
+                    <p className="text-center">
+
+                        <span>{calcMinutes(time)}</span>:
                 <span>{calcSeconds(time) < 10 ? `0${calcSeconds(time)}` : calcSeconds(time)}</span>
+                    </p>
                 </div>
-                <div>
+                <div className="flex justify-center">
                     <button
+                        className="btn btn-red"
                         onClick={() => {
                             if (status === statusTypes.pause) {
                                 return handleStart();
@@ -110,13 +115,14 @@ export default function timer() {
                     >
                         {status === statusTypes.pause ? 'Start' : status === statusTypes.done ? 'Stopped' : 'Pause'}
                     </button>
-                    <button onClick={handleReset}>Reset</button>
-                    <select onChange={handleChangeClockType} defaultValue="work">
+                    <button className="btn" onClick={handleReset}>Reset</button>
+                    <select className={`${showAlarmControls ? 'mr-4' : ''}`} onChange={handleChangeClockType} defaultValue="work">
                         <option value="work">Work</option>
                         <option value="break">Break</option>
                     </select>
+                    {/* <Dropdown /> */}
                     {showAlarmControls && (
-                        <button onClick={() => {
+                        <button className="btn" onClick={() => {
                             stopNacho();
                             setShowAlarmControls(false);
                         }}
