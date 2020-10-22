@@ -24,7 +24,7 @@ export default function timer() {
     const [status, setStatus] = useState(statusTypes.pause);
     const [clockType, setClockType] = useState(clockTypes.work)
     const [showAlarmControls, setShowAlarmControls] = useState(false)
-    const [playNachoooo, { stop: stopNacho, isPlaying: isNachoPlaying }] = useSound('/nachoooo.mp3', {
+    const [playNachoooo, { stop: stopNacho }] = useSound('/nachoooo.mp3', {
         volume: 0.5,
         interrupt: true,
         loop: true,
@@ -43,6 +43,7 @@ export default function timer() {
 
     function handleEnd() {
         playNachoooo({ loop: true })
+        setStatus(statusTypes.done)
     }
 
     function handleReset() {
@@ -121,6 +122,13 @@ export default function timer() {
                         <option value="break">Break</option>
                     </select>
                     {/* <Dropdown /> */}
+                    {!showAlarmControls && (
+                        <button
+                            className="btn ml-2"
+                            onClick={() => playNachoooo()}>
+                            Test alarm
+                        </button>
+                    )}
                     {showAlarmControls && (
                         <button className="btn" onClick={() => {
                             stopNacho();
